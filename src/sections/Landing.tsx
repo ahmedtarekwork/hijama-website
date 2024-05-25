@@ -111,7 +111,7 @@ const Landing = () => {
   return (
     <div id="home" className="relative overflow-hidden">
       <ul
-        className="flex items-stretch justify-center bg-blue-800"
+        className="flex items-stretch justify-center bg-blue-900"
         style={{
           width: `${imgs.length * 100}%`,
         }}
@@ -140,7 +140,7 @@ const Landing = () => {
           <li
             ref={textRefs[i]}
             key={nanoid()}
-            className="px-5 w-full text-center font-bold max-sm:font-semibold text-4xl max-sm:text-xl leading-[50px] z-10 text-blue-100 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="px-5 w-full text-center font-bold max-sm:font-semibold text-4xl max-sm:text-xl leading-[50px] z-10 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{
               opacity: activeIndex.current === i ? "1" : "0",
               transition: `translate ${transitionTime}ms, opacity 300ms`,

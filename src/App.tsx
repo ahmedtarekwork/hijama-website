@@ -24,7 +24,8 @@ function App() {
   useEffect(() => {
     // if user enter to page insted of home page => redirect him to home page
     // because there is no other pages than home page
-    if (location.pathname !== "/") location.replace("/");
+    if (["/", "/robots.txt"].every((path) => path !== location.pathname))
+      location.replace("/");
 
     const header = headerRef.current;
     const main = mainELRef.current;
@@ -60,6 +61,7 @@ function App() {
 
           {/* contact on whatsapp btn */}
           <a
+            rel="nofollow"
             href="https://wa.me/201094713802"
             target="_blank"
             className="sticky mt-5 bottom-5 right-5 z-[999] bg-green-500 text-white rounded-full w-12 h-12 grid place-content-center hover:bg-green-600 transition duration-200 mb-5"

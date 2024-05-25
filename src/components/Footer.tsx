@@ -61,6 +61,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
         <div className="flex items-center justify-center mt-10" dir="ltr">
           made by{" "}
           <a
+            rel="nofollow"
             className="underline"
             href="https://ahmed-profile.netlify.app/#home"
             target="_blank"

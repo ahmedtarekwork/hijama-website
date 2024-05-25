@@ -80,7 +80,9 @@ const ServicesCard = ({
         <div className="flex-1 flex items-end pt-10">
           <a
             href={callUsBtnHref.href}
-            {...(callUsBtnHref.newTab ? { target: "_blank" } : {})}
+            {...(callUsBtnHref.newTab
+              ? { target: "_blank", rel: "nofollow" }
+              : {})}
             className="text-center select-none mx-auto w-fit bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-200"
           >
             اتصل بنا الان

@@ -151,7 +151,7 @@
 
   .landing-slider-img-wrapper::after {
     content: "";
-    @apply inset-0 absolute bg-blue-950 bg-opacity-60;
+    @apply inset-0 absolute bg-blue-950 bg-opacity-85;
   }
   /* end landing */
 
