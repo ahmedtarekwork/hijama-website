@@ -83,7 +83,7 @@ const ServicesCard = ({
             {...(callUsBtnHref.newTab
               ? { target: "_blank", rel: "nofollow" }
               : {})}
-            className="text-center select-none mx-auto w-fit bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-200"
+            className="text-center select-none mx-auto w-fit bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-200"
           >
             اتصل بنا الان
           </a>

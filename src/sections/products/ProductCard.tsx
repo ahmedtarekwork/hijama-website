@@ -17,6 +17,8 @@ const ProductCard = ({
           src={img}
           alt={"product image"}
           className="max-h-[400px] object-contain mx-auto mb-5"
+          width="100%"
+          height="100%"
         />
       </div>
       <h3 className="title-with-line text-xl max-sm:font-semibold font-extrabold mb-7 dark:text-blue-400 text-blue-600">

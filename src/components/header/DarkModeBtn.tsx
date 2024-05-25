@@ -13,6 +13,7 @@ const DarkModeBtn = ({ className }: Props) => {
 
   return (
     <button
+      title="switch themes"
       className={className}
       onClick={() => {
         document.documentElement.classList.toggle("dark");

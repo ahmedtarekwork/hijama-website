@@ -10,7 +10,12 @@ const AboutUs = () => {
     <SectionWrapper title="نبذة عنا" id="about-us">
       <div className="flex gap-5 max-sm:items-center about-us-data-holder">
         <div className="shrink-[0.5]">
-          <img src={personal_img} alt="tarek image" />
+          <img
+            src={personal_img}
+            alt="tarek image"
+            width="100%"
+            height="100%"
+          />
         </div>
 
         <div>
@@ -24,6 +29,7 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
+
       <video
         className="mx-auto mt-5 h-[600px]"
         src={gym_video}

@@ -116,23 +116,27 @@ const Landing = () => {
           width: `${imgs.length * 100}%`,
         }}
       >
-        {imgs.map(({ img }, i) => (
-          <li
-            ref={imgHoldersRefs[i]}
-            key={nanoid()}
-            className="flex-1 relative landing-slider-img-wrapper"
-            style={{
-              translate: `${activeIndex.current * 100}%`,
-              transition: transitionTime + "ms",
-            }}
-          >
-            <img
-              src={img}
-              alt={`landing slide image number ${i}`}
-              className="object-contain w-full h-full"
-            />
-          </li>
-        ))}
+        {imgs.map(({ img }, i) => {
+          return (
+            <li
+              ref={imgHoldersRefs[i]}
+              key={nanoid()}
+              className="flex-1 relative landing-slider-img-wrapper"
+              style={{
+                translate: `${activeIndex.current * 100}%`,
+                transition: transitionTime + "ms",
+              }}
+            >
+              <img
+                src={img}
+                alt={`landing slide image number ${i}`}
+                className="object-contain w-full h-full"
+                width="100%"
+                height="100%"
+              ></img>
+            </li>
+          );
+        })}
       </ul>
 
       <ul>

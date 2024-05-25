@@ -110,41 +110,39 @@ const Certificates = () => {
 
   return (
     <SectionWrapper title="الشهادات" id="certificates">
-      <ul>
-        <div dir="ltr" className="flex gap-5 max-md:flex-col [&>*]:flex-1 ">
-          {[hejamaImg, training_2].map((img) => {
-            const imgAttr = {
-              src: img,
-            } as ComponentProps<"img">;
-            if (img.includes("trainer")) imgAttr.className = "md:w-[450px]";
+      <ul dir="ltr" className="flex gap-5 max-md:flex-col [&>*]:flex-1 ">
+        {[hejamaImg, training_2].map((img) => {
+          const imgAttr = {
+            src: img,
+          } as ComponentProps<"img">;
+          if (img.includes("trainer")) imgAttr.className = "md:w-[450px]";
 
-            return (
-              <CertificateCard
-                key={nanoid()}
-                className="grid place-content-center"
-                imgAttr={imgAttr}
-                imgHolderAttr={{
-                  onClick: handleOpenModalClick,
-                }}
-              />
-            );
-          })}
-        </div>
-
-        <div className="mt-4 massage-certificate-imgs-holder">
-          {massageAndFirstAidImgs.map((img) => (
+          return (
             <CertificateCard
               key={nanoid()}
-              imgAttr={{
-                src: img,
-                className: "w-full h-full object-contain",
-              }}
+              className="grid place-content-center"
+              imgAttr={imgAttr}
               imgHolderAttr={{
                 onClick: handleOpenModalClick,
               }}
             />
-          ))}
-        </div>
+          );
+        })}
+      </ul>
+
+      <ul className="mt-4 massage-certificate-imgs-holder">
+        {massageAndFirstAidImgs.map((img) => (
+          <CertificateCard
+            key={nanoid()}
+            imgAttr={{
+              src: img,
+              className: "object-contain",
+            }}
+            imgHolderAttr={{
+              onClick: handleOpenModalClick,
+            }}
+          />
+        ))}
       </ul>
 
       <Modal
@@ -203,7 +201,7 @@ const Certificates = () => {
             />
           </div>
 
-          <div className="imgs-slider h-[25%] ">
+          <div className="certificate-modal-imgs-holder h-[25%] ">
             <ul
               className="flex items-center justify-start gap-3 h-full overflow-x-auto py-3"
               dir="ltr"
@@ -213,7 +211,7 @@ const Certificates = () => {
                   ref={imgHoldersList.current[i]}
                   key={nanoid()}
                   className={
-                    "relative border-[3px] border-blue-700 flex-1 h-full cursor-pointer modal-down-slider-img-holder scale-95 min-w-[90px]" +
+                    "relative border-[3px] border-blue-700 flex-1 max-h-full p-1 cursor-pointer modal-down-slider-img-holder scale-95 min-w-[90px]" +
                     (imgsList.indexOf(img) ===
                     imgsList.indexOf(activeImgSrc.current)
                       ? " active"

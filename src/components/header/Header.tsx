@@ -127,12 +127,16 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
     >
       <div className="container flex justify-between items-center gap-5">
         <div className="flex gap-4 items-center text-center">
-          <button className="md:hidden" onClick={() => toggleMenu()}>
+          <button
+            className="md:hidden"
+            onClick={() => toggleMenu()}
+            title="toggle side menu"
+          >
             <FaBars />
           </button>
 
           <a className="relative mb-7 ml-5" href="#home">
-            <h1 className="max-md:text-lg max-md:font-semibold text-2xl font-bold dark:text-blue-300 text-blue-500">
+            <h1 className="max-md:text-lg max-md:font-semibold text-2xl font-bold dark:text-blue-300 text-blue-600">
               طارق علي
             </h1>
 
