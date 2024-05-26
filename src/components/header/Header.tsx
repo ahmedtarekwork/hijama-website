@@ -88,6 +88,9 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
           const section = document.querySelector(id) as HTMLElement;
           if (!section) return;
 
+          if (scrollY === 0)
+            return current.classList.toggle("active", section.id === "home");
+
           const sectionParentOffsetTop =
             section.id === "home" ? 0 : section.parentElement?.offsetTop || 0;
           const offsetTop = section.offsetTop + sectionParentOffsetTop;

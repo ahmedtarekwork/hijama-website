@@ -143,13 +143,14 @@
   /* end header */
 
   /* start landing */
+  #home,
   #home > ul:first-of-type {
     max-height: min(100vh, 1000px);
   }
 
   .landing-slider-img-wrapper::after {
     content: "";
-    @apply inset-0 absolute bg-blue-950 bg-opacity-85;
+    @apply inset-0 absolute bg-blue-950 bg-opacity-75;
   }
   /* end landing */
 

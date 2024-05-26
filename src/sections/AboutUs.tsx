@@ -11,6 +11,7 @@ const AboutUs = () => {
       <div className="flex gap-5 max-sm:items-center about-us-data-holder">
         <div className="shrink-[0.5]">
           <img
+            loading="lazy"
             src={personal_img}
             alt="tarek image"
             width="100%"

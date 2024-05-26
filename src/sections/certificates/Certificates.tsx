@@ -111,11 +111,11 @@ const Certificates = () => {
   return (
     <SectionWrapper title="الشهادات" id="certificates">
       <ul dir="ltr" className="flex gap-5 max-md:flex-col [&>*]:flex-1 ">
-        {[hejamaImg, training_2].map((img) => {
+        {[hejamaImg, training_2].map((img, i) => {
           const imgAttr = {
             src: img,
           } as ComponentProps<"img">;
-          if (img.includes("trainer")) imgAttr.className = "md:w-[450px]";
+          if (i === 1) imgAttr.className = "md:w-[450px]";
 
           return (
             <CertificateCard

@@ -14,6 +14,7 @@ const ProductCard = ({
     <li className="border-2 border-blue-500 p-2 rounded-md">
       <div>
         <img
+          loading="lazy"
           src={img}
           alt={"product image"}
           className="max-h-[400px] object-contain mx-auto mb-5"

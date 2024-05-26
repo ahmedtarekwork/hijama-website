@@ -13,7 +13,13 @@ const CertificateCard = ({ imgHolderAttr, imgAttr, ...attr }: Props) => {
   return (
     <li {...attr}>
       <div {...imgHolderAttr} className={imgHolderClassName}>
-        <img height="100%" width="100%" alt="certificate image" {...imgAttr} />
+        <img
+          loading="lazy"
+          height="100%"
+          width="100%"
+          alt="certificate image"
+          {...imgAttr}
+        />
       </div>
     </li>
   );

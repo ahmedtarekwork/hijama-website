@@ -36,6 +36,7 @@ const ServicesCard = ({
     case "img": {
       cardImg = (
         <img
+          loading="lazy"
           className="w-full h-full object-contain"
           src={img.data}
           alt="service card image"
