@@ -1,7 +1,14 @@
 // react
 import { forwardRef } from "react";
-import ContactList from "./ContactList";
-import useServices from "../hooks/useServices";
+
+// components
+import ContactList from "../ContactList";
+import ViewsCounter from "./ViewsCounter";
+
+// hooks
+import useServices from "../../hooks/useServices";
+
+// utils
 import { nanoid } from "nanoid";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
@@ -57,6 +64,8 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
             </ul>
           </div>
         </div>
+
+        <ViewsCounter />
 
         <div className="flex items-center justify-center mt-10" dir="ltr">
           made by{" "}

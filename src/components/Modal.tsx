@@ -95,6 +95,9 @@ const Modal = memo(
             <div
               ref={modalRef}
               className="modal z-[1002] fixed inset-0 text-white"
+              style={{
+                overflowY: "auto",
+              }}
             >
               <button
                 ref={closeBtnRef}

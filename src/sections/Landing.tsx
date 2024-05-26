@@ -128,7 +128,7 @@ const Landing = () => {
               }}
             >
               <img
-                loading="lazy"
+                {...(i !== 0 ? { loading: "lazy" } : {})}
                 src={img}
                 alt={`landing slide image number ${i}`}
                 className="object-contain w-full h-full"

@@ -166,7 +166,7 @@ const Certificates = () => {
       >
         <div className="pb-2 px-4 h-full">
           <div
-            className="h-[75%] flex items-center gap-3 pb-3"
+            className="h-full flex items-center gap-3 pb-3"
             ref={activeImgHolderRef}
           >
             <SliderBtn
@@ -181,6 +181,8 @@ const Certificates = () => {
                 src={activeImgSrc.current}
                 className="transition duration-[200ms] object-contain flex-1"
                 alt="certificate image"
+                width="100%"
+                height="100%"
               />
               <div className="flex justify-between items-center gap-3 sm:hidden">
                 <SliderBtn
@@ -201,7 +203,7 @@ const Certificates = () => {
             />
           </div>
 
-          <div className="certificate-modal-imgs-holder h-[25%] ">
+          <div className="certificate-modal-imgs-holder">
             <ul
               className="flex items-center justify-start gap-3 h-full overflow-x-auto py-3"
               dir="ltr"
@@ -241,6 +243,8 @@ const Certificates = () => {
                     className="transition duration-[200ms] object-contain w-full h-full pointer-events-none"
                     src={img}
                     alt={`certificate image number ${i + 1}`}
+                    width="100%"
+                    height="100%"
                   />
                 </li>
               ))}

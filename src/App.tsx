@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 // components
 import Header from "./components/header/Header";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 
 // sections
 import Landing from "./sections/Landing";
