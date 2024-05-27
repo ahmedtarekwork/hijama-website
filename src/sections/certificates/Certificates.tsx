@@ -1,17 +1,14 @@
 // react
-import { ComponentProps, MouseEvent, createRef, useRef } from "react";
+import { useState, useRef, type ComponentProps } from "react";
 
 // components
 import SectionWrapper from "../../components/SectionWrapper";
 import Modal, { type ModalRefType } from "../../components/Modal";
-import SliderBtn from "./SliderBtn";
 import CertificateCard from "./CertificateCard";
+import CertificatesSlider from "./CertificatesSlider";
 
 // utils
 import { nanoid } from "nanoid";
-
-// icons
-import { TiChevronLeft, TiChevronRight } from "react-icons/ti";
 
 // imgs
 // hejama imgs
@@ -49,64 +46,17 @@ const trainingImgs = [training_1, training_2];
 const imgsList = [...massageAndFirstAidImgs, ...trainingImgs, hejamaImg];
 
 const Certificates = () => {
-  const activeImgSrc = useRef("");
+  const [activeImgIndex, setActiveIndexImg] = useState<number>(0);
+
+  // refs
   const modalRef = useRef<ModalRefType>(null);
-  const activeImgRef = useRef<HTMLImageElement>(null);
-  const activeImgHolderRef = useRef<HTMLDivElement>(null);
-  const imgHoldersList = useRef(imgsList.map(() => createRef<HTMLLIElement>()));
 
-  const toggleActiveFromImgs = () => {
-    imgHoldersList.current.map(({ current: holder }) => {
-      if (holder) {
-        const imgSrc = holder.querySelector("img")?.src;
+  const [showSwiper, setShowSwiper] = useState(false);
 
-        if (imgSrc) {
-          holder.classList.toggle(
-            "active",
-            imgSrc.includes(activeImgSrc.current)
-          );
-        }
-      }
-    });
-  };
-
-  // onClick on arrow btns
-  const HandleSlideImg = (mode: "previous" | "next") => {
-    const lastActiveSrc = imgsList.indexOf(activeImgSrc.current);
-    let finalSrcIndex = lastActiveSrc + (mode === "previous" ? -1 : 1);
-
-    if (finalSrcIndex < 0) finalSrcIndex = imgsList.length - 1;
-    if (finalSrcIndex > imgsList.length - 1) finalSrcIndex = 0;
-
-    activeImgSrc.current = imgsList[finalSrcIndex];
-    if (activeImgRef.current) activeImgRef.current.src = activeImgSrc.current;
-
-    toggleActiveFromImgs();
-  };
-
-  const handleOpenModalClick = (e: MouseEvent<HTMLImageElement>) => {
-    const currentSrc = e.currentTarget.querySelector("img")?.src || "";
-    activeImgSrc.current =
-      imgsList.find((src) => currentSrc.includes(src)) || "";
-
+  const handleOpenModalClick = (i: number) => {
     modalRef.current?.toggleModal(true);
+    setActiveIndexImg(i);
   };
-
-  const watcher = new ResizeObserver(() => {
-    const activeImg = activeImgRef.current;
-    const imgHolder = activeImgHolderRef.current;
-
-    if (activeImg && imgHolder) {
-      const btnsHolderHeight =
-        (imgHolder.nextElementSibling as HTMLDivElement)?.offsetHeight || 0;
-
-      activeImg.style.height = `${
-        innerWidth <= 639
-          ? imgHolder.offsetHeight - btnsHolderHeight
-          : imgHolder.offsetHeight
-      }px`;
-    }
-  });
 
   return (
     <SectionWrapper title="الشهادات" id="certificates">
@@ -123,7 +73,10 @@ const Certificates = () => {
               className="grid place-content-center"
               imgAttr={imgAttr}
               imgHolderAttr={{
-                onClick: handleOpenModalClick,
+                onClick: () =>
+                  handleOpenModalClick(
+                    imgsList.findIndex((image) => image.includes(img))
+                  ),
               }}
             />
           );
@@ -139,7 +92,10 @@ const Certificates = () => {
               className: "object-contain",
             }}
             imgHolderAttr={{
-              onClick: handleOpenModalClick,
+              onClick: () =>
+                handleOpenModalClick(
+                  imgsList.findIndex((image) => image.includes(img))
+                ),
             }}
           />
         ))}
@@ -148,109 +104,16 @@ const Certificates = () => {
       <Modal
         ref={modalRef}
         afterToggleModalOpening={{
-          Fn: (modal) => {
-            if (modal) watcher.observe(modal);
-
-            const src = activeImgSrc.current;
-            const activeImg = activeImgRef.current;
-
-            if (src && activeImg) {
-              activeImg.src = src;
-              toggleActiveFromImgs();
-            }
-          },
-          cleanupFn: (modal) => {
-            if (modal) watcher.unobserve(modal);
-          },
+          Fn: (_, openModal) => setShowSwiper(openModal),
         }}
       >
-        <div className="pb-2 px-4 h-full">
-          <div
-            className="h-full flex items-center gap-3 pb-3"
-            ref={activeImgHolderRef}
-          >
-            <SliderBtn
-              className="max-sm:hidden"
-              children={<TiChevronRight />}
-              onClick={() => HandleSlideImg("next")}
-            />
-
-            <div className="flex-1 h-full max-sm:flex max-sm:flex-col max-sm:gap-3 grid place-content-center">
-              <img
-                ref={activeImgRef}
-                src={activeImgSrc.current}
-                className="transition duration-[200ms] object-contain flex-1"
-                alt="certificate image"
-                width="100%"
-                height="100%"
-              />
-              <div className="flex justify-between items-center gap-3 sm:hidden">
-                <SliderBtn
-                  children={<TiChevronRight />}
-                  onClick={() => HandleSlideImg("next")}
-                />
-                <SliderBtn
-                  children={<TiChevronLeft />}
-                  onClick={() => HandleSlideImg("previous")}
-                />
-              </div>
-            </div>
-
-            <SliderBtn
-              className="max-sm:hidden"
-              children={<TiChevronLeft />}
-              onClick={() => HandleSlideImg("previous")}
-            />
-          </div>
-
-          <div className="certificate-modal-imgs-holder">
-            <ul
-              className="flex items-center justify-start gap-3 h-full overflow-x-auto py-3"
-              dir="ltr"
-            >
-              {imgsList.map((img, i) => (
-                <li
-                  ref={imgHoldersList.current[i]}
-                  key={nanoid()}
-                  className={
-                    "relative border-[3px] border-blue-700 flex-1 max-h-full p-1 cursor-pointer modal-down-slider-img-holder scale-95 min-w-[90px]" +
-                    (imgsList.indexOf(img) ===
-                    imgsList.indexOf(activeImgSrc.current)
-                      ? " active"
-                      : "")
-                  }
-                  onClick={(e: MouseEvent<HTMLLIElement>) => {
-                    const currentSrc =
-                      e.currentTarget.querySelector("img")?.src || "";
-
-                    const src = imgsList.find((source) =>
-                      currentSrc.includes(source)
-                    );
-
-                    if (src) {
-                      activeImgSrc.current = src;
-
-                      const activeImg = activeImgRef.current;
-                      if (activeImg) {
-                        activeImg.src = src;
-
-                        toggleActiveFromImgs();
-                      }
-                    }
-                  }}
-                >
-                  <img
-                    className="transition duration-[200ms] object-contain w-full h-full pointer-events-none"
-                    src={img}
-                    alt={`certificate image number ${i + 1}`}
-                    width="100%"
-                    height="100%"
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <CertificatesSlider
+          showSwiper={showSwiper}
+          imgsList={imgsList}
+          afterOpenSlider={{
+            Fn: (swiper) => swiper.slideTo(activeImgIndex),
+          }}
+        />
       </Modal>
     </SectionWrapper>
   );

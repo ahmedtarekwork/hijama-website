@@ -29,12 +29,11 @@ const ViewsCounter = () => {
     })();
   }, []);
 
-  if (isLoading) return <span>جاري التحميل...</span>;
   return !isError ? (
     <div className="flex gap-2 font-semibold flex-wrap">
       <FaEye />
       عدد المشاهدات:
-      <span>{views}</span>
+      <span>{isLoading ? "جاري التحميل..." : views}</span>
     </div>
   ) : null;
 };

@@ -22,10 +22,6 @@ function App() {
   const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // if user enter to page insted of home page => redirect him to home page
-    // because there is no other pages than home page
-    if (location.pathname !== "/") location.replace("/");
-
     const header = headerRef.current;
     const main = mainELRef.current;
     const footer = footerRef.current;

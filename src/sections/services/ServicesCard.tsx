@@ -40,6 +40,8 @@ const ServicesCard = ({
           className="w-full h-full object-contain"
           src={img.data}
           alt="service card image"
+          width="100%"
+          height="100%"
         />
       );
       break;

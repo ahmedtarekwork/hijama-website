@@ -53,12 +53,27 @@ const Modal = memo(
         // close modal
         document.documentElement.style.removeProperty("overflow");
         toggleActiveClass(false);
-        setTimeout(() => setOpenModal(false), 300);
+        setTimeout(() => {
+          const modal = modalRef.current;
+          if (modal) afterToggleModalOpening?.Fn(modal, false);
+
+          setOpenModal(false);
+        }, 300);
       };
 
       useImperativeHandle(ref, () => ({ toggleModal }), []);
 
       useEffect(() => {
+        const keyboardFn = (e: KeyboardEvent) =>
+          e.key.toLowerCase() === "escape" ? toggleModal(false) : null;
+
+        window.addEventListener("keydown", keyboardFn);
+        return () => window.removeEventListener("keydown", keyboardFn);
+      }, []);
+
+      useEffect(() => {
+        const modal = modalRef.current;
+
         if (openModal) {
           // open modal
           setTimeout(() => {
@@ -77,15 +92,18 @@ const Modal = memo(
             childHolder.style.top = `calc(${btnHeight}px + ${btnTopProperty} + ${gapBetweenBtnAndHolder})`;
             childHolder.style.height = `calc(100% - (${btnHeight}px + ${btnTopProperty} + ${gapBetweenBtnAndHolder}))`;
           }
+
+          if (afterToggleModalOpening) {
+            setTimeout(() => afterToggleModalOpening.Fn(modal, openModal));
+          }
         }
 
-        const modal = modalRef.current;
-        if (afterToggleModalOpening) {
-          const { Fn, cleanupFn } = afterToggleModalOpening;
+        return () => {
+          if (afterToggleModalOpening?.cleanupFn)
+            return afterToggleModalOpening.cleanupFn(modal, openModal);
 
-          setTimeout(() => Fn(modal, openModal));
-          if (cleanupFn) return cleanupFn(modal, openModal);
-        }
+          document.documentElement.style.removeProperty("overflow");
+        };
       }, [openModal]);
 
       return (
@@ -102,7 +120,7 @@ const Modal = memo(
               <button
                 ref={closeBtnRef}
                 onClick={() => toggleModal(false)}
-                className="absolute top-[20px] max-sm:right-[10px] right-[30px] bg-red-600 w-10 h-10 hover:bg-red-900 transition duration-[270ms] mr-3"
+                className="absolute top-[20px] max-sm:right-[10px] right-[30px] bg-red-600 w-10 h-10 hover:bg-red-900 transition duration-[270ms] mr-3 rounded-md"
               >
                 X
               </button>

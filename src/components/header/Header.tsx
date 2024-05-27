@@ -138,12 +138,12 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
             <FaBars />
           </button>
 
-          <a className="relative mb-7 ml-5" href="#home">
+          <a className="relative pb-7 pl-5" href="#home">
             <h1 className="max-md:text-lg max-md:font-semibold text-2xl font-bold dark:text-blue-300 text-blue-600">
               طارق علي
             </h1>
 
-            <p className="max-md:text-sm max-md:-left-4 absolute mt-1 -left-5 w-max dark:text-slate-400 text-slate-600 font-semibold">
+            <p className="max-md:text-sm max-md:-left-4 absolute mt-1 -left-[2px] w-max dark:text-slate-400 text-slate-600 font-semibold">
               لعمل الحجامة
             </p>
           </a>
