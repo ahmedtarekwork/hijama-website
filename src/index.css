@@ -208,104 +208,104 @@
   .certificates-smaller-slider .swiper {
     padding: 11px 0 20px;
   }
+}
 
-  #certificates li {
-    @apply flex items-center;
+#certificates li {
+  @apply flex items-center;
 
-    & .certificate-img-holder {
-      @apply relative cursor-pointer shadow-md shadow-blue-950 overflow-hidden;
+  & .certificate-img-holder {
+    @apply relative cursor-pointer shadow-md shadow-blue-950 overflow-hidden;
 
+    & img {
+      @apply pointer-events-none transition duration-200;
+    }
+
+    &::after {
+      content: "إستعراض";
+      @apply absolute inset-0 z-10 bg-blue-950 bg-opacity-80 grid place-content-center text-2xl font-bold text-blue-200 transition duration-200 opacity-0 pointer-events-none;
+    }
+
+    &:hover {
       & img {
-        @apply pointer-events-none transition duration-200;
+        @apply scale-110 -rotate-1;
       }
 
       &::after {
-        content: "إستعراض";
-        @apply absolute inset-0 z-10 bg-blue-950 bg-opacity-80 grid place-content-center text-2xl font-bold text-blue-200 transition duration-200 opacity-0 pointer-events-none;
-      }
-
-      &:hover {
-        & img {
-          @apply scale-110 -rotate-1;
-        }
-
-        &::after {
-          opacity: 1;
-        }
+        opacity: 1;
       }
     }
   }
-
-  @media (min-width: 1280px) {
-    .massage-certificate-imgs-holder {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      grid-template-rows: 1fr 220px auto;
-      @apply gap-4 grid;
-    }
-  }
-
-  @media (min-width: 1024px) and (max-width: 1279px) {
-    .massage-certificate-imgs-holder {
-      @apply columns-3 block space-x-4 space-y-4;
-    }
-  }
-
-  @media (max-width: 1023px) {
-    .massage-certificate-imgs-holder {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      @apply gap-4 grid;
-    }
-  }
-
-  @media (max-width: 345px) {
-    .massage-certificate-imgs-holder {
-      grid-template-columns: auto;
-    }
-  }
-
-  /* end certificates */
-
-  /* start services */
-  @media (min-width: 420px) {
-    .services-list {
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    }
-  }
-  /* end services */
-
-  /* start products */
-
-  .products-list {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-
-  @media (max-width: 340px) {
-    .products-list {
-      grid-template-columns: auto;
-    }
-  }
-
-  /* end products */
-
-  /* start contact us */
-  #contact-us a {
-    @apply w-max;
-  }
-  /* end contact us */
-
-  /* start footer */
-  #app-footer .title-with-line {
-    @apply mb-3;
-  }
-
-  :is(#app-footer, .contact-list) a {
-    @apply hover:underline p-2;
-  }
-
-  @media (max-width: 230px) {
-    :is(#app-footer, .contact-list) a {
-      @apply text-xs;
-    }
-  }
-  /* end footer */
 }
+
+@media (min-width: 1280px) {
+  .massage-certificate-imgs-holder {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr 220px auto;
+    @apply gap-4 grid;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .massage-certificate-imgs-holder {
+    @apply columns-3 block space-x-4 space-y-4;
+  }
+}
+
+@media (max-width: 1023px) {
+  .massage-certificate-imgs-holder {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    @apply gap-4 grid;
+  }
+}
+
+@media (max-width: 345px) {
+  .massage-certificate-imgs-holder {
+    grid-template-columns: auto;
+  }
+}
+
+/* end certificates */
+
+/* start services */
+@media (min-width: 420px) {
+  .services-list {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+/* end services */
+
+/* start products */
+
+.products-list {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 340px) {
+  .products-list {
+    grid-template-columns: auto;
+  }
+}
+
+/* end products */
+
+/* start contact us */
+#contact-us a {
+  @apply w-max;
+}
+/* end contact us */
+
+/* start footer */
+#app-footer .title-with-line {
+  @apply mb-3;
+}
+
+:is(#app-footer, .contact-list) a {
+  @apply hover:underline p-2;
+}
+
+@media (max-width: 230px) {
+  :is(#app-footer, .contact-list) a {
+    @apply text-xs;
+  }
+}
+/* end footer */
