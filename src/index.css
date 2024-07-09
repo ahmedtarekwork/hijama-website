@@ -101,7 +101,7 @@
   #app-header {
     /* start nav */
     & nav {
-      @apply transition max-md:translate-x-full dark:bg-slate-800 bg-white max-md:absolute max-md:top-full max-md:left-0 max-md:w-full max-md:max-h-screen max-md:h-screen max-md:overflow-y-auto;
+      @apply transition max-md:translate-x-full dark:bg-slate-800 bg-white max-md:absolute max-md:top-full max-md:left-0 max-md:w-full max-md:min-h-screen;
 
       &.active {
         @apply max-md:translate-x-0;
@@ -190,122 +190,106 @@
       }
     }
   }
-}
 
-@media (max-width: 300px) {
-  .certificates-smaller-slider {
-    @apply hidden !important;
-  }
-}
-
-@media (min-width: 769px) {
-  .certificates-smaller-slider .swiper {
-    padding: 11px 50px 20px 129px;
-  }
-}
-
-@media (min-width: 300px) {
-  .certificates-smaller-slider .swiper {
-    padding: 11px 0 20px;
-  }
-}
-
-#certificates li {
-  @apply flex items-center;
-
-  & .certificate-img-holder {
-    @apply relative cursor-pointer shadow-md shadow-blue-950 overflow-hidden;
-
-    & img {
-      @apply pointer-events-none transition duration-200;
+  @media (max-width: 300px) {
+    .certificates-smaller-slider {
+      @apply hidden !important;
     }
+  }
 
-    &::after {
-      content: "إستعراض";
-      @apply absolute inset-0 z-10 bg-blue-950 bg-opacity-80 grid place-content-center text-2xl font-bold text-blue-200 transition duration-200 opacity-0 pointer-events-none;
+  @media (min-width: 769px) {
+    .certificates-smaller-slider .swiper {
+      padding: 11px 50px 20px 129px;
     }
+  }
 
-    &:hover {
+  @media (min-width: 300px) {
+    .certificates-smaller-slider .swiper {
+      padding: 11px 0 20px;
+    }
+  }
+
+  #certificates li {
+    @apply flex items-center;
+
+    & .certificate-img-holder {
+      @apply relative cursor-pointer shadow-md shadow-blue-950 overflow-hidden rounded-[10px];
+
       & img {
-        @apply scale-110 -rotate-1;
+        @apply pointer-events-none transition duration-200;
       }
 
       &::after {
-        opacity: 1;
+        content: "إستعراض";
+        @apply absolute inset-0 z-10 bg-blue-950 bg-opacity-80 grid place-content-center text-2xl font-bold text-blue-200 transition duration-200 opacity-0 pointer-events-none;
+      }
+
+      &:hover {
+        & img {
+          @apply scale-110 -rotate-1;
+        }
+
+        &::after {
+          opacity: 1;
+        }
       }
     }
   }
-}
 
-@media (min-width: 1280px) {
-  .massage-certificate-imgs-holder {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 1fr 220px auto;
-    @apply gap-4 grid;
+  .certificate-imgs-holder {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    @apply gap-5 grid;
   }
-}
 
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .massage-certificate-imgs-holder {
-    @apply columns-3 block space-x-4 space-y-4;
+  @media (max-width: 345px) {
+    .certificate-imgs-holder {
+      grid-template-columns: auto;
+    }
   }
-}
 
-@media (max-width: 1023px) {
-  .massage-certificate-imgs-holder {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    @apply gap-4 grid;
+  /* end certificates */
+
+  /* start services */
+  @media (min-width: 420px) {
+    .services-list {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
   }
-}
+  /* end services */
 
-@media (max-width: 345px) {
-  .massage-certificate-imgs-holder {
-    grid-template-columns: auto;
-  }
-}
+  /* start products */
 
-/* end certificates */
-
-/* start services */
-@media (min-width: 420px) {
-  .services-list {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  }
-}
-/* end services */
-
-/* start products */
-
-.products-list {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-@media (max-width: 340px) {
   .products-list {
-    grid-template-columns: auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-}
 
-/* end products */
+  @media (max-width: 340px) {
+    .products-list {
+      grid-template-columns: auto;
+    }
+  }
 
-/* start contact us */
-#contact-us a {
-  @apply w-max;
-}
-/* end contact us */
+  /* end products */
 
-/* start footer */
-#app-footer .title-with-line {
-  @apply mb-3;
-}
+  /* start contact us */
+  #contact-us a {
+    @apply w-max;
+  }
+  /* end contact us */
 
-:is(#app-footer, .contact-list) a {
-  @apply hover:underline p-2;
-}
+  /* start footer */
+  #app-footer .title-with-line {
+    @apply mb-3;
+  }
 
-@media (max-width: 230px) {
   :is(#app-footer, .contact-list) a {
-    @apply text-xs;
+    @apply hover:underline p-2;
   }
+
+  @media (max-width: 230px) {
+    :is(#app-footer, .contact-list) a {
+      @apply text-xs;
+    }
+  }
+  /* end footer */
 }
-/* end footer */

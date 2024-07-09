@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import type { ComponentProps } from "react";
 
 type Props = {
   imgHolderAttr?: ComponentProps<"div">;
@@ -19,6 +19,11 @@ const CertificateCard = ({ imgHolderAttr, imgAttr, ...attr }: Props) => {
           width="100%"
           alt="certificate image"
           {...imgAttr}
+          style={{
+            width: "100%",
+            height: "100%",
+            ...imgAttr?.style,
+          }}
         />
       </div>
     </li>

@@ -22,6 +22,8 @@ function App() {
   const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (location.pathname !== "/") location.replace("/");
+
     const header = headerRef.current;
     const main = mainELRef.current;
     const footer = footerRef.current;
