@@ -16,8 +16,8 @@ const ProductCard = ({
         <img
           loading="lazy"
           src={img}
-          alt={"product image"}
-          className="max-h-[400px] object-contain mx-auto mb-5"
+          alt="product image"
+          className="max-w-full aspect-[1] object-contain mx-auto mb-5"
           width="100%"
           height="100%"
         />

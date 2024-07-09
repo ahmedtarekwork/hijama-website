@@ -241,7 +241,7 @@
     @apply gap-5 grid;
   }
 
-  @media (max-width: 345px) {
+  @media (max-width: 400px) {
     .certificate-imgs-holder {
       grid-template-columns: auto;
     }
