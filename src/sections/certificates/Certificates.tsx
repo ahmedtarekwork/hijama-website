@@ -13,6 +13,9 @@ import CertificatesSliderHolder, {
 import { nanoid } from "nanoid";
 
 // imgs
+// bee venom
+import beeVenom_1 from "../../../imgs/certificates/10.svg";
+
 // AUPS
 import AUPS_1 from "../../../imgs/certificates/AUPS/1.jpg";
 import AUPS_2 from "../../../imgs/certificates/AUPS/2.jpg";
@@ -52,9 +55,10 @@ const hijamaImgs = [hejamaImg, hejamaImg_2, hejamaImg_3];
 const AUPS = [AUPS_1, AUPS_2, AUPS_3];
 
 const imgsList = [
-  ...massageAndFirstAidImgs,
   ...AUPS,
   ...hijamaImgs,
+  ...massageAndFirstAidImgs,
+  beeVenom_1,
   training_1,
 ];
 
@@ -65,7 +69,7 @@ const Certificates = () => {
   return (
     <SectionWrapper title="الشهادات" id="certificates">
       <ul className="mt-4 certificate-imgs-holder">
-        {[...AUPS, ...hijamaImgs, ...massageAndFirstAidImgs].map((img) => (
+        {imgsList.map((img) => (
           <CertificateCard
             key={nanoid()}
             imgAttr={{
