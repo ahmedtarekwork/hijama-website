@@ -6,6 +6,7 @@ import massage from "../../imgs/services/2.mp4";
 import fireTowel from "../../imgs/services/3.mp4";
 import worm from "../../imgs/services/4.jpg";
 import beePoison from "../../imgs/services/5.jpg";
+import chinnesePins from "../../imgs/services/6.jpg";
 
 import { type ServicesCardComponentProps } from "../sections/services/ServicesCard";
 
@@ -103,6 +104,19 @@ const useServices = (): ServicesCardComponentProps[] => {
       callUsBtnHref: {
         href: "https://wa.me/201094713802?text=لقد شاهدت موقعك الالكتروني واريد ان تقوم بعلاجي بمصل النحل",
         newTab: true,
+      },
+    },
+    {
+      cardId: "chineese-pins",
+      img: {
+        data: chinnesePins,
+        type: "img",
+      },
+      description: "لدينا خدمة العلاج بالإبر الصينية" + ".",
+      title: "العلاج بالإبر الصينية",
+      callUsBtnHref: {
+        newTab: true,
+        href: "https://wa.me/201094713802?text=لقد شاهدت موقعك الالكتروني واريد ان تقوم بعلاج بالإبر الصينية",
       },
     },
   ];

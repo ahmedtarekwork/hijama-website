@@ -1,32 +1,26 @@
 import { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 
+import { onSnapshot, doc, updateDoc, increment } from "firebase/firestore";
+import { db } from "../../config/firebaseConfing";
+
 const ViewsCounter = () => {
+  const docRef = doc(db, "counter", "7aVapcivO9vqbefQYvMx");
+
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [views, setViews] = useState(0);
 
   useEffect(() => {
-    (async () => {
-      setIsLoading(true);
+    updateDoc(docRef, { count: increment(1) });
+    onSnapshot(docRef, (data) => {
+      const count = data.data();
 
-      try {
-        const res = (
-          (await (
-            await fetch("https://tarek-ali.onrender.com/api/v1/views")
-          ).json()) as {
-            views: number;
-          }
-        ).views;
+      if (count) setViews(count.count);
+      else setIsError(true);
 
-        setViews(res);
-        setIsError(false);
-      } catch (e) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
+      if (isLoading) setIsLoading(false);
+    });
   }, []);
 
   return !isError ? (
