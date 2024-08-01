@@ -61,7 +61,7 @@ const Landing = () => {
   const textRefs = imgs.map(() => createRef<HTMLLIElement>());
   const transitionTime = 400;
 
-  let interval = 0;
+  let interval: ReturnType<typeof setInterval>;
   const activeIndex = useRef(0);
 
   const slideingFn = () => {
