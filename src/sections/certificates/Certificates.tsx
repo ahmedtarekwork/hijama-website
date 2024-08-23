@@ -47,17 +47,23 @@ import card_5 from "../../../imgs/certificates/cards/5.jpg";
 import card_6 from "../../../imgs/certificates/cards/6.jpg";
 import card_7 from "../../../imgs/certificates/cards/7.svg";
 
+// plants and woam medicines
+import worm from "../../../imgs/certificates/worm.jpg";
+import plants from "../../../imgs/certificates/plants.jpg";
+
 const AUPS = [AUPS_1, AUPS_2, AUPS_3];
 const hijamaImgs = [hejamaImg, hejamaImg_2, hejamaImg_3];
 const beeVenom = [bee_venom, bee_venom_2];
 const massageAndFirstAidImgs = [img_1, img_2, img_3, img_4];
 const training = [training_1, training_2];
 const cards = [card_1, card_2, card_3, card_4, card_5, card_6, card_7];
+const wormAndPlants = [worm, plants];
 
 const imgsList = [
   ...AUPS,
   ...hijamaImgs,
   ...beeVenom,
+  ...wormAndPlants,
   ...massageAndFirstAidImgs,
   ...training,
   ...cards,
