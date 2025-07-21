@@ -67,6 +67,9 @@ import appreciation_1 from "../../../imgs/certificates/appreciation.jpg";
 // woam
 import worm from "../../../imgs/certificates/worm.jpg";
 
+// not spicific
+import not_specifc_certificate from "../../../imgs/certificates/not_specifc_certificate.jpg";
+
 const AUPS = [AUPS_1, AUPS_2, AUPS_3];
 const hijamaImgs = [
   hejamaImg,
@@ -80,6 +83,7 @@ const hijamaImgs = [
 const beeVenom = [bee_venom, bee_venom_2];
 const massageAndFirstAidImgs = [img_1, img_2, img_3, img_4];
 const training = [training_1, training_2];
+const not_specifc_certificates = [not_specifc_certificate];
 const cards = [card_1, card_2, card_3, card_4, card_5, card_6, card_7];
 const wormArr = [worm];
 const plants = [plants_1, plants_2];
@@ -98,6 +102,7 @@ const imgsList = [
   ...massageAndFirstAidImgs,
   ...training,
   ...wormArr,
+  ...not_specifc_certificates,
   ...cards,
 ];
 
