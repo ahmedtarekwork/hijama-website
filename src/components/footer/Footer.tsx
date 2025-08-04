@@ -72,7 +72,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           <a
             rel="nofollow"
             className="underline"
-            href="https://ahmed-profile.netlify.app/#home"
+            href="https://ahmed-profile.vercel.app"
             target="_blank"
           >
             Ahmed Tarek
